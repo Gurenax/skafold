@@ -112,4 +112,5 @@ module.exports = router`
       console.log(`Skafold: API routes for ${modelCapitalized} were created successfully!`)
     })
 }
-skafold()
+
+module.exports = skafold
