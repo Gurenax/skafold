@@ -106,11 +106,11 @@ router.delete('/${modelLowercased}s/:id', (req, res) => {
 
 module.exports = router`
 
-  writeCode(`skafold-${modelLowercased}.js`, code)
+  return writeCode(`skafold-${modelLowercased}.js`, code)
     .then(()=> {
       // When the file was completely written
-      console.log(`Skafold: API routes for ${modelCapitalized} were created successfully!`)
+      return `Skafold: API routes for ${modelCapitalized} were created successfully!`
     })
 }
 
-module.exports = skafold
+module.exports = { skafold }
