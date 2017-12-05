@@ -1,0 +1,9 @@
+{
+  "name": "skafold",
+  "version": "1.0.0",
+  "description": "Simple API route scaffolder for Express/Mongoose",
+  "main": "index.js",
+  "repository": "git@github.com:Gurenax/skafold.git",
+  "author": "Glenn Dimaliwat <glenn.dimaliwat@gmail.com>",
+  "license": "MIT"
+}
