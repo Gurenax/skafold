@@ -1,6 +1,6 @@
 {
   "name": "skafold",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "Simple API route scaffolder for Express/Mongoose",
   "main": "index.js",
   "repository": "git@github.com:Gurenax/skafold.git",
