@@ -13,7 +13,7 @@ const ${modelCapitalized} = require('../models/${modelCapitalized}')
 
 const router = express.Router()
 
-// GET - Read all ${modelLowercased}
+// GET - Read all ${modelPluralized}
 router.get('/${modelPluralized}', (req, res) => {
   ${modelCapitalized}.find()
   // Once it has loaded these documents
