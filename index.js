@@ -1,22 +1,25 @@
-const { writeCode } = require('./lib/write-code')
-const { capitalize } = require('./lib/capitalize')
+const capitalize = require('lodash/capitalize')
+const _inflection = require("lodash-inflection")
+const { writeCode } = require('./lib/write-file')
 
 const skafold = () => {
   const args = [...process.argv]
   const model = args[args.length - 1]
-  const modelCapitalized = capitalize(model)
   const modelLowercased = model.toLowerCase()
+  const modelCapitalized = capitalize(model)
+  const modelPluralized = _inflection.pluralize(modelLowercased)
   const code = `const express = require('express')
-const ${modelCapitalized} = require('../models/${modelLowercased}')
+const ${modelCapitalized} = require('../models/${modelCapitalized}')
+
 const router = express.Router()
 
 // GET - Read all ${modelLowercased}
-router.get('/${modelLowercased}s', (req, res) => {
+router.get('/${modelPluralized}', (req, res) => {
   ${modelCapitalized}.find()
   // Once it has loaded these documents
-  .then(${modelLowercased} => {
+  .then(${modelPluralized} => {
     // Send them back as the response
-    res.json(${modelLowercased})
+    res.json(${modelPluralized})
   })
   .catch(error => {
     res.status(400).json({ error: error.message })
@@ -24,7 +27,7 @@ router.get('/${modelLowercased}s', (req, res) => {
 })
 
 // GET - Read an individual ${modelLowercased} document
-router.get('/${modelLowercased}s/:id', (req, res) => {
+router.get('/${modelPluralized}/:id', (req, res) => {
   const id = req.params.id
   // Ask the model for the document with this id
   ${modelCapitalized}.findById(id)
@@ -48,7 +51,7 @@ router.get('/${modelLowercased}s/:id', (req, res) => {
 })
 
 // POST - Create a new ${modelLowercased} document
-router.post('/${modelLowercased}s', (req, res) => {
+router.post('/${modelPluralized}', (req, res) => {
   const attributes = req.body
   ${modelCapitalized}.create(attributes)
     .then(${modelLowercased} => {
@@ -60,7 +63,7 @@ router.post('/${modelLowercased}s', (req, res) => {
 })
 
 // PATCH - Update a ${modelLowercased} document
-router.patch('/${modelLowercased}s/:id', (req, res) => {
+router.patch('/${modelPluralized}/:id', (req, res) => {
   const id = req.params.id
   const attributes = req.body
   ${
@@ -84,7 +87,7 @@ router.patch('/${modelLowercased}s/:id', (req, res) => {
 })
 
 // DELETE - Destroy a ${modelLowercased} document
-router.delete('/${modelLowercased}s/:id', (req, res) => {
+router.delete('/${modelPluralized}/:id', (req, res) => {
   const id = req.params.id
   ${modelCapitalized}.findByIdAndRemove(id)
     .then(${modelLowercased} => {
