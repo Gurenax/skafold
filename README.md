@@ -1,4 +1,4 @@
-# Skafold [![npm version](https://badge.fury.io/js/skafold.svg)](https://badge.fury.io/js/skafold) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# Skafold [![npm version](https://badge.fury.io/js/skafold.svg)](https://badge.fury.io/js/skafold) [![npm](https://img.shields.io/npm/dt/skafold.svg)]() [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 Skafold is a simple API route scaffolder for Express/Mongoose
 
 ## Installation
