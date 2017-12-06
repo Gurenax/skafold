@@ -1,6 +1,6 @@
 const capitalize = require('lodash/capitalize')
 const _inflection = require("lodash-inflection")
-const { writeCode } = require('./lib/write-file')
+const { writeToFile } = require('./lib/write-file')
 
 const skafold = () => {
   const args = [...process.argv]
@@ -109,7 +109,7 @@ router.delete('/${modelPluralized}/:id', (req, res) => {
 
 module.exports = router`
 
-  return writeCode(`skafold-${modelLowercased}.js`, code)
+  return writeToFile(`skafold-${modelLowercased}.js`, code)
     .then(()=> {
       // When the file was completely written
       return `Skafold: API routes for ${modelCapitalized} were created successfully!`
